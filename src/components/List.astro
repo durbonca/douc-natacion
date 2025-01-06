@@ -1,6 +1,12 @@
-<div class="w-1/2">
-  <form class="flex items-center gap-2">
-    <label class="flex-1 text-nowrap" for="input">Escribe tu nombre: </label>
+---
+import { turso } from "../turso";
+
+const { rows } = await turso.execute("SELECT * FROM list");
+---
+
+<div class="w-full">
+  <form class="flex items-center justify-start gap-2">
+    <label class="text-nowrap" for="input">Escribe tu nombre: </label>
     <input
       id="input"
       type="text"
@@ -9,12 +15,12 @@
     <button type="submit" class="btn btn-primary"> Anotarse </button>
   </form>
   <ul class="space-y-2">
-    <!-- {
-      list.map((item, index) => (
-        <li key={index} class="border-b-[1px] p-2">
-          {index + 1}. {item}
+    {
+      rows.map((item, index) => (
+        <li class="border-b-[1px] p-2">
+          {index + 1}. {item.name}
         </li>
       ))
-    } -->
+    }
   </ul>
 </div>
